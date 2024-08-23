@@ -1,0 +1,87 @@
+#######################################
+# Syntax Coloring Map For 74HC4051 and IRMassive
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+74HC4051	KEYWORD1
+IRMassive	KEYWORD1
+MASSIVE	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+
+###### For 74HC4051
+HC4051	KEYWORD2
+
+setPinS0	KEYWORD2
+setPinS1	KEYWORD2
+setPinS2	KEYWORD2
+
+getPinS0	KEYWORD2
+getPinS1	KEYWORD2
+getPinS2	KEYWORD2
+
+setChannelY0	KEYWORD2
+setChannelY1	KEYWORD2
+setChannelY2	KEYWORD2
+setChannelY3	KEYWORD2
+setChannelY4	KEYWORD2
+setChannelY5	KEYWORD2
+setChannelY6	KEYWORD2
+setChannelY7	KEYWORD2
+setChannelY8	KEYWORD2
+
+setChannel	KEYWORD2
+
+###### For IRMassive
+IRMassive	KEYWORD1
+
+setAnalogInputPin	KEYWORD2
+getAnalogInputPin	KEYWORD2
+
+setCH1	KEYWORD2
+setCH2	KEYWORD2
+setCH3	KEYWORD2
+setCH4	KEYWORD2
+setCH5	KEYWORD2
+setCH6	KEYWORD2
+setCH7	KEYWORD2
+setCH8	KEYWORD2
+
+getValueFromChannel	KEYWORD2
+
+getValueFromAnalogInputPin	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+###### For 74HC4051
+HC4051Channels_t	LITERAL1
+
+HC4051_Y_0	LITERAL1
+HC4051_Y_1	LITERAL1
+HC4051_Y_2	LITERAL1
+HC4051_Y_3	LITERAL1
+HC4051_Y_4	LITERAL1
+HC4051_Y_5	LITERAL1
+HC4051_Y_6	LITERAL1
+HC4051_Y_7	LITERAL1
+
+###### For IRMassive
+IRMassiveCH_t	LITERAL1
+
+IR_MASSIVE_CH_1	LITERAL1
+IR_MASSIVE_CH_2	LITERAL1
+IR_MASSIVE_CH_3	LITERAL1
+IR_MASSIVE_CH_4	LITERAL1
+IR_MASSIVE_CH_5	LITERAL1
+IR_MASSIVE_CH_6	LITERAL1
+IR_MASSIVE_CH_7	LITERAL1
+IR_MASSIVE_CH_8	LITERAL1
