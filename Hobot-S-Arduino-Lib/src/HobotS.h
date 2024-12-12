@@ -45,7 +45,7 @@ class HobotSClass {
     HobotSClass();
 
     // Настройка устройства
-    void allSetup();
+    void setup();
     void matrixSetup();
     void gyroAccSetup();
     void powerSourcesSetup();
@@ -59,8 +59,8 @@ class HobotSClass {
     // Методы светодиодной матрицы
     uint8_t matrixGetNumPixels();
     void matrixAllClear();
-    void matrixClearPixel(uint8_t _pixel);
-    void matrixSetPixelColor(uint8_t _num_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    void matrixClearPixel(uint8_t _id_pixel);
+    void matrixSetPixelColor(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
 
     // Методы гироскопа
     float gyroGetX();
@@ -122,7 +122,29 @@ class HobotSClass {
     void enableBlueButtonLED();
     void disableBlueButtonLED();
 
-    // Методы портов датчиков
+    // Методы датчиков порта A
+    byte portADistanceSensorGetDistance();
+    void portADistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+
+    // Методы датчиков порта B
+    byte portBDistanceSensorGetDistance();
+    void portBDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+
+    // Методы датчиков порта C
+    byte portCDistanceSensorGetDistance();
+    void portCDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+
+    // Методы датчиков порта D
+    byte portDDistanceSensorGetDistance();
+    void portDDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+
+    // Методы датчиков порта E
+    byte portEDistanceSensorGetDistance();
+    void portEDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+
+    // Методы датчиков порта F
+    byte portFDistanceSensorGetDistance();
+    void portFDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
 
     // Методы взаимодействия с bluetooth
 

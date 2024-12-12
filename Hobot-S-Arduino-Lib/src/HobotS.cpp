@@ -25,7 +25,7 @@ HobotSClass::HobotSClass() {
 }
 
 /* Настройка устройства */
-void HobotSClass::allSetup() {
+void HobotSClass::setup() {
   HobotSClass::matrixSetup();
   HobotSClass::gyroAccSetup();  
   HobotSClass::powerSourcesSetup();
@@ -38,6 +38,9 @@ void HobotSClass::allSetup() {
 
   HobotSClass::enablePowerMain(); // Должно быть всегда включено
   HobotSClass::enablePowerBLE(); // Должно быть всегда включено
+  HobotSClass::disablePowerMatrix();
+  HobotSClass::disablePowerAudio();
+  HobotSClass::disablePowerMotors();
 
   // Принудительная очистка матрицы
   HobotSClass::matrixAllClear();
@@ -143,12 +146,12 @@ void HobotSClass::matrixAllClear() {
   Pixels.clear();
   Pixels.show();
 }
-void HobotSClass::matrixClearPixel(uint8_t _pixel) {
-  Pixels.setPixelColor(_pixel, Pixels.Color(0, 0, 0));
+void HobotSClass::matrixClearPixel(uint8_t _id_pixel) {
+  Pixels.setPixelColor(_id_pixel, Pixels.Color(0, 0, 0));
   Pixels.show();
 }
-void HobotSClass::matrixSetPixelColor(uint8_t _num_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
-  Pixels.setPixelColor(_num_pixel, Pixels.Color(_red_ch, _green_ch, _blue_ch));
+void HobotSClass::matrixSetPixelColor(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  Pixels.setPixelColor(_id_pixel, Pixels.Color(_red_ch, _green_ch, _blue_ch));
   Pixels.show();
 }
 
@@ -372,7 +375,125 @@ void HobotSClass::disableBlueButtonLED() {
   digitalWrite(LED_BTN_BLUE_PIN, LOW);
 }
 
-/* Методы портов датчиков */
+/* Методы датчиков порта A */
+byte HobotSClass::portADistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+  if (SerialA.available() > 0) {
+    input_value = SerialA.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portADistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+}
+
+/* Методы датчиков порта B */
+byte HobotSClass::portBDistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+  if (SerialB.available() > 0) {
+    input_value = SerialB.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portBDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+}
+
+/* Методы датчиков порта C */
+byte HobotSClass::portCDistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+  if (SerialC.available() > 0) {
+    input_value = SerialC.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portCDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+}
+
+/* Методы датчиков порта D */
+byte HobotSClass::portDDistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+  if (SerialD.available() > 0) {
+    input_value = SerialD.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portDDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+}
+
+/* Методы датчиков порта E */
+byte HobotSClass::portEDistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+  if (SerialE.available() > 0) {
+    input_value = SerialE.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portEDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+}
+
+/* Методы датчиков порта F */
+byte HobotSClass::portFDistanceSensorGetDistance() {
+  uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
+  byte input_value = 0;
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+  if (SerialF.available() > 0) {
+    input_value = SerialF.read();
+  }
+
+  return input_value;
+}
+void HobotSClass::portFDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
+  uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+}
 
 /* Методы взаимодействия с bluetooth */
 
