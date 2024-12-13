@@ -123,28 +123,70 @@ class HobotSClass {
     void disableBlueButtonLED();
 
     // Методы датчиков порта A
+    // ДАТЧИК РАССТОЯНИЯ
     byte portADistanceSensorGetDistance();
     void portADistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portAColorSensorGetRedCh();
+    word portAColorSensorGetGreenCh();
+    word portAColorSensorGetBlueCh();
+    word portAColorSensorGetClearCh();
+    void portAColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы датчиков порта B
+    // ДАТЧИК РАССТОЯНИЯ
     byte portBDistanceSensorGetDistance();
     void portBDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portBColorSensorGetRedCh();
+    word portBColorSensorGetGreenCh();
+    word portBColorSensorGetBlueCh();
+    word portBColorSensorGetClearCh();
+    void portBColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы датчиков порта C
+    // ДАТЧИК РАССТОЯНИЯ
     byte portCDistanceSensorGetDistance();
     void portCDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portCColorSensorGetRedCh();
+    word portCColorSensorGetGreenCh();
+    word portCColorSensorGetBlueCh();
+    word portCColorSensorGetClearCh();
+    void portCColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы датчиков порта D
+    // ДАТЧИК РАССТОЯНИЯ
     byte portDDistanceSensorGetDistance();
     void portDDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portDColorSensorGetRedCh();
+    word portDColorSensorGetGreenCh();
+    word portDColorSensorGetBlueCh();
+    word portDColorSensorGetClearCh();
+    void portDColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы датчиков порта E
+    // ДАТЧИК РАССТОЯНИЯ
     byte portEDistanceSensorGetDistance();
     void portEDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portEColorSensorGetRedCh();
+    word portEColorSensorGetGreenCh();
+    word portEColorSensorGetBlueCh();
+    word portEColorSensorGetClearCh();
+    void portEColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы датчиков порта F
+    // ДАТЧИК РАССТОЯНИЯ
     byte portFDistanceSensorGetDistance();
     void portFDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch);
+    // ДАТЧИК ЦВЕТА
+    word portFColorSensorGetRedCh();
+    word portFColorSensorGetGreenCh();
+    word portFColorSensorGetBlueCh();
+    word portFColorSensorGetClearCh();
+    void portFColorSensorSetLEDBrightness(uint8_t _led_brightness);
 
     // Методы взаимодействия с bluetooth
 

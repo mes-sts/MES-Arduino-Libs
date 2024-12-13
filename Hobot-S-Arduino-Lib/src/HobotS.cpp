@@ -376,6 +376,7 @@ void HobotSClass::disableBlueButtonLED() {
 }
 
 /* Методы датчиков порта A */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portADistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -394,8 +395,76 @@ void HobotSClass::portADistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, 
     SerialA.write(send_data[i]);
   }
 }
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portAColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+  if (SerialA.available() > 1) {
+    uint8_t i = 0;
+    while(SerialA.available() > 0) {
+      input_buffer[i] = SerialA.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portAColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+  if (SerialA.available() > 1) {
+    uint8_t i = 0;
+    while(SerialA.available() > 0) {
+      input_buffer[i] = SerialA.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portAColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+  if (SerialA.available() > 1) {
+    uint8_t i = 0;
+    while(SerialA.available() > 0) {
+      input_buffer[i] = SerialA.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portAColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+  if (SerialA.available() > 1) {
+    uint8_t i = 0;
+    while(SerialA.available() > 0) {
+      input_buffer[i] = SerialA.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portAColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+}
 
 /* Методы датчиков порта B */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portBDistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -414,8 +483,76 @@ void HobotSClass::portBDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, 
     SerialB.write(send_data[i]);
   }
 }
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portBColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+  if (SerialB.available() > 1) {
+    uint8_t i = 0;
+    while(SerialB.available() > 0) {
+      input_buffer[i] = SerialB.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portBColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+  if (SerialB.available() > 1) {
+    uint8_t i = 0;
+    while(SerialB.available() > 0) {
+      input_buffer[i] = SerialB.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portBColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+  if (SerialB.available() > 1) {
+    uint8_t i = 0;
+    while(SerialB.available() > 0) {
+      input_buffer[i] = SerialB.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portBColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+  if (SerialB.available() > 1) {
+    uint8_t i = 0;
+    while(SerialB.available() > 0) {
+      input_buffer[i] = SerialB.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portBColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialB.write(send_data[i]);
+  }
+}
 
 /* Методы датчиков порта C */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portCDistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -434,8 +571,76 @@ void HobotSClass::portCDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, 
     SerialC.write(send_data[i]);
   }
 }
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portCColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+  if (SerialC.available() > 1) {
+    uint8_t i = 0;
+    while(SerialC.available() > 0) {
+      input_buffer[i] = SerialC.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portCColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+  if (SerialC.available() > 1) {
+    uint8_t i = 0;
+    while(SerialC.available() > 0) {
+      input_buffer[i] = SerialC.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portCColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+  if (SerialC.available() > 1) {
+    uint8_t i = 0;
+    while(SerialC.available() > 0) {
+      input_buffer[i] = SerialC.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portCColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialC.write(send_data[i]);
+  }
+  if (SerialC.available() > 1) {
+    uint8_t i = 0;
+    while(SerialC.available() > 0) {
+      input_buffer[i] = SerialC.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portCColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialA.write(send_data[i]);
+  }
+}
 
 /* Методы датчиков порта D */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portDDistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -454,8 +659,76 @@ void HobotSClass::portDDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, 
     SerialD.write(send_data[i]);
   }
 }
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portDColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+  if (SerialD.available() > 1) {
+    uint8_t i = 0;
+    while(SerialD.available() > 0) {
+      input_buffer[i] = SerialD.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portDColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+  if (SerialD.available() > 1) {
+    uint8_t i = 0;
+    while(SerialD.available() > 0) {
+      input_buffer[i] = SerialD.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portDColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+  if (SerialD.available() > 1) {
+    uint8_t i = 0;
+    while(SerialD.available() > 0) {
+      input_buffer[i] = SerialD.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portDColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+  if (SerialD.available() > 1) {
+    uint8_t i = 0;
+    while(SerialD.available() > 0) {
+      input_buffer[i] = SerialD.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portDColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialD.write(send_data[i]);
+  }
+}
 
 /* Методы датчиков порта E */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portEDistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -474,8 +747,76 @@ void HobotSClass::portEDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, 
     SerialE.write(send_data[i]);
   }
 }
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portEColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+  if (SerialE.available() > 1) {
+    uint8_t i = 0;
+    while(SerialE.available() > 0) {
+      input_buffer[i] = SerialE.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portEColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+  if (SerialE.available() > 1) {
+    uint8_t i = 0;
+    while(SerialE.available() > 0) {
+      input_buffer[i] = SerialE.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portEColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+  if (SerialE.available() > 1) {
+    uint8_t i = 0;
+    while(SerialE.available() > 0) {
+      input_buffer[i] = SerialE.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portEColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+  if (SerialE.available() > 1) {
+    uint8_t i = 0;
+    while(SerialE.available() > 0) {
+      input_buffer[i] = SerialE.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portEColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialE.write(send_data[i]);
+  }
+}
 
 /* Методы датчиков порта F */
+// ДАТЧИК РАССТОЯНИЯ
 byte HobotSClass::portFDistanceSensorGetDistance() {
   uint8_t send_data[] = {HS_SONAR_GET_DISTANCE_CM, 0, 0, 0, 0};
   byte input_value = 0;
@@ -490,6 +831,73 @@ byte HobotSClass::portFDistanceSensorGetDistance() {
 }
 void HobotSClass::portFDistanceSensorSetLED(uint8_t _id_pixel, uint8_t _red_ch, uint8_t _green_ch, uint8_t _blue_ch) {
   uint8_t send_data[] = {HS_SONAR_SET_LED_RGB_AND_PIXEL, _id_pixel, _red_ch, _green_ch, _blue_ch};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+}
+// ДАТЧИК ЦВЕТА
+word HobotSClass::portFColorSensorGetRedCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+  if (SerialF.available() > 1) {
+    uint8_t i = 0;
+    while(SerialF.available() > 0) {
+      input_buffer[i] = SerialF.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portFColorSensorGetGreenCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_GREEN_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+  if (SerialF.available() > 1) {
+    uint8_t i = 0;
+    while(SerialF.available() > 0) {
+      input_buffer[i] = SerialF.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portFColorSensorGetBlueCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_BLUE_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+  if (SerialF.available() > 1) {
+    uint8_t i = 0;
+    while(SerialF.available() > 0) {
+      input_buffer[i] = SerialF.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+word HobotSClass::portFColorSensorGetClearCh() {
+  uint8_t send_data[] = {HS_COLOR_GET_CLEAR_CH, 0};
+  uint8_t input_buffer[2] = {0};
+  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
+    SerialF.write(send_data[i]);
+  }
+  if (SerialF.available() > 1) {
+    uint8_t i = 0;
+    while(SerialF.available() > 0) {
+      input_buffer[i] = SerialF.read();
+      i++;
+    }
+    return (word)((input_buffer[0] << 8) | input_buffer[1]);
+  }  
+}
+void HobotSClass::portFColorSensorSetLEDBrightness(uint8_t _led_brightness) {
+  uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, _led_brightness};
   for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
     SerialF.write(send_data[i]);
   }

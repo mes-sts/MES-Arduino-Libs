@@ -1,5 +1,5 @@
 /*
- * hs_color_sensor_firmware
+ * hobot_s_pretest
  * 
  * Тестово-экпериментальный пример для контроллера Hobots S
  * 
@@ -9,7 +9,7 @@
  * Tools → USB support (if available) → CDC (generic 'Serial' supersed U(S)ART)
  * Tools → Upload method → HID Bootloader 2.2
  * 
- * Copyright (C) 2024. v1.0 / MES
+ * Copyright (C) 2024. v1.1 / MES
  */
 
 
@@ -26,24 +26,85 @@ void setup() {
 }
 
 void loop() {
-  //uint8_t send_data[] = {HS_SENSOR_NAME, 0};
-  //uint8_t send_data[] = {HS_SENSOR_VERSION, 0};
-  uint8_t send_data[] = {HS_COLOR_GET_RED_CH, 100};
-  //uint8_t send_data[] = {HS_COLOR_SET_LED_BRIGHTNESS, 50};
-  for (uint8_t i = 0; i < sizeof(send_data); i++ ) {
-    HobotS.SerialA.write(send_data[i]);
-  }
-  if (HobotS.SerialA.available() > 1) {
-    char input_buffer[2];
-    uint8_t i = 0;
-    while(HobotS.SerialA.available() > 0) {
-      input_buffer[i] = HobotS.SerialA.read();
-      i++;
-    }
-    SerialDebug.print(((input_buffer[1] << 8) | input_buffer[0]));
-    SerialDebug.println();
-  }
-  delay(1000);
+// ДАТЧИК ЦВЕТА
+  /*
+  SerialDebug.println(HobotS.portAColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portAColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portAColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portAColorSensorGetClearCh());
+  delay(500);
+  HobotS.portAColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
+  /*
+  SerialDebug.println(HobotS.portBColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portBColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portBColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portBColorSensorGetClearCh());
+  delay(500);
+  HobotS.portBColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
+  /*
+  SerialDebug.println(HobotS.portCColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portCColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portCColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portCColorSensorGetClearCh());
+  delay(500);
+  HobotS.portCColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
+  /*
+  SerialDebug.println(HobotS.portDColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portDColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portDColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portDColorSensorGetClearCh());
+  delay(500);
+  HobotS.portDColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
+  /*
+  SerialDebug.println(HobotS.portEColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portEColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portEColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portEColorSensorGetClearCh());
+  delay(500);
+  HobotS.portEColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
+  /*
+  SerialDebug.println(HobotS.portFColorSensorGetRedCh());
+  delay(500);
+  SerialDebug.println(HobotS.portFColorSensorGetGreenCh());
+  delay(500);
+  SerialDebug.println(HobotS.portFColorSensorGetBlueCh());
+  delay(500);
+  SerialDebug.println(HobotS.portFColorSensorGetClearCh());
+  delay(500);
+  HobotS.portFColorSensorSetLEDBrightness(255);
+  delay(500);
+  SerialDebug.println();
+  */
 
 // ДАТЧИК РАССТОЯНИЯ
   /*
